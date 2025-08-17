@@ -1,103 +1,130 @@
-import Image from "next/image";
+'use client';
+
+import { useEffect } from 'react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    useEffect(() => {
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+        }
+
+        themeToggleBtn?.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            let theme = 'light-theme';
+            if (document.body.classList.contains('dark-theme')) {
+                theme = 'dark-theme';
+            }
+            localStorage.setItem('theme', theme);
+        });
+    }, []);
+
+    return (
+        <>
+            <header>
+                <nav>
+                    <div className="container">
+                        <h1><a href="#">My Web Dev Business</a></h1>
+                        <ul>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                        <button id="theme-toggle" className="btn-theme-toggle">Toggle Theme</button>
+                    </div>
+                </nav>
+            </header>
+
+            <section id="hero" className="hero">
+                <div className="container">
+                    <h2>Your Vision, Our Code.</h2>
+                    <p>Transforming ideas into stunning digital realities.</p>
+                    <a href="#contact" className="btn">Get a Free Consultation</a>
+                </div>
+            </section>
+
+            <section id="services" className="services">
+                <div className="container">
+                    <h3>Our Services</h3>
+                    <div className="service-grid">
+                        <div className="service-item">
+                            <h4>Web Development</h4>
+                            <p>Building responsive, fast, and scalable websites and web applications using modern technologies.</p>
+                        </div>
+                        <div className="service-item">
+                            <h4>SEO Optimization</h4>
+                            <p>Improving your website's visibility on search engines to drive organic traffic and growth.</p>
+                        </div>
+                        <div className="service-item">
+                            <h4>UI/UX Design</h4>
+                            <p>Crafting intuitive and engaging user interfaces for an exceptional user experience.</p>
+                        </div>
+                        <div className="service-item">
+                            <h4>Digital Marketing</h4>
+                            <p>Developing strategies to enhance your online presence and reach your target audience effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="portfolio" className="portfolio">
+                <div className="container">
+                    <h3>Our Portfolio</h3>
+                    <div className="portfolio-grid">
+                        <div className="portfolio-item">
+                            <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1" />
+                            <h4>Project Title 1</h4>
+                            <p>A description of the project and technologies used.</p>
+                        </div>
+                        <div className="portfolio-item">
+                            <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2" />
+                            <h4>Project Title 2</h4>
+                            <p>A description of the project and technologies used.</p>
+                        </div>
+                        <div className="portfolio-item">
+                            <img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3" />
+                            <h4>Project Title 3</h4>
+                            <p>A description of the project and technologies used.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimonials" className="testimonials">
+                <div className="container">
+                    <h3>What Our Clients Say</h3>
+                    <div className="testimonial-item">
+                        <p>"Incredible work! Our website has never looked better and performs flawlessly."</p>
+                        <span>- Happy Client 1</span>
+                    </div>
+                    <div className="testimonial-item">
+                        <p>"They exceeded our expectations. Professional, responsive, and highly skilled."</p>
+                        <span>- Happy Client 2</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" className="contact">
+                <div className="container">
+                    <h3>Get in Touch</h3>
+                    <p>Ready to start your project? Contact us for a free consultation.</p>
+                    <form>
+                        <input type="text" placeholder="Your Name" required />
+                        <input type="email" placeholder="Your Email" required />
+                        <textarea placeholder="Your Message" rows={5}></textarea>
+                        <button type="submit" className="btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+
+            <footer>
+                <div className="container">
+                    <p>&copy; 2024 My Web Dev Business. All rights reserved.</p>
+                </div>
+            </footer>
+        </>
+    );
 }
