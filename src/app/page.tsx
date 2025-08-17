@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useSession, signOut } from 'next-auth/react';
 
 export default function Home() {
+    const { data: session } = useSession();
+
     useEffect(() => {
         const themeToggleBtn = document.getElementById('theme-toggle');
         const currentTheme = localStorage.getItem('theme');
@@ -34,6 +37,11 @@ export default function Home() {
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                         <button id="theme-toggle" className="btn-theme-toggle">Toggle Theme</button>
+                        {session ? (
+                            <button onClick={() => signOut()} className="btn-theme-toggle ml-4">Sign Out</button>
+                        ) : (
+                            <a href="/auth/signin" className="btn-theme-toggle ml-4">Sign In</a>
+                        )}
                     </div>
                 </nav>
             </header>
