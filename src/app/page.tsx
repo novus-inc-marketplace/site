@@ -29,10 +29,11 @@ export default function Home() {
             <header>
                 <nav>
                     <div className="container">
-                        <h1><a href="#">My Web Dev Business</a></h1>
+                        <h1><a href="#">Novus Inc</a></h1>
                         <ul>
                             <li><a href="#services">Services</a></li>
                             <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="/blog">Blog</a></li>
                             <li><a href="#testimonials">Testimonials</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
@@ -48,9 +49,9 @@ export default function Home() {
 
             <section id="hero" className="hero">
                 <div className="container">
-                    <h2>Your Vision, Our Code.</h2>
-                    <p>Transforming ideas into stunning digital realities.</p>
-                    <a href="#contact" className="btn">Get a Free Consultation</a>
+                    <h2>Bringing the digital world to reality.</h2>
+                    <p>At Novus Inc, we don't just build websites; we craft digital experiences that resonate with your audience and drive real results. We focus on delivering exceptional value, building trust, and creating highly converting online presences that truly stand out.</p>
+                    <a href="#contact" className="btn">Let's Build Something Great Together!</a>
                 </div>
             </section>
 
@@ -60,19 +61,19 @@ export default function Home() {
                     <div className="service-grid">
                         <div className="service-item">
                             <h4>Web Development</h4>
-                            <p>Building responsive, fast, and scalable websites and web applications using modern technologies.</p>
+                            <p>From stunning front-end designs to robust back-end systems, we build dynamic, scalable, and secure web solutions tailored to your unique business needs. We specialize in modern frameworks to ensure top-tier performance and user experience.</p>
                         </div>
                         <div className="service-item">
                             <h4>SEO Optimization</h4>
-                            <p>Improving your website's visibility on search engines to drive organic traffic and growth.</p>
+                            <p>Unlock your online potential with our expert SEO strategies. We optimize your website to rank higher in search results, attract more organic traffic, and connect you with clients actively searching for your services.</p>
                         </div>
                         <div className="service-item">
                             <h4>UI/UX Design</h4>
-                            <p>Crafting intuitive and engaging user interfaces for an exceptional user experience.</p>
+                            <p>Crafting intuitive, engaging, and beautiful user interfaces is at the heart of what we do. Our UI/UX designs focus on creating seamless user journeys that delight your visitors and convert them into loyal customers.</p>
                         </div>
                         <div className="service-item">
                             <h4>Digital Marketing</h4>
-                            <p>Developing strategies to enhance your online presence and reach your target audience effectively.</p>
+                            <p>Beyond development, we empower your business with comprehensive digital marketing strategies. From social media campaigns to content marketing, we help you reach your target audience, build your brand, and drive significant growth.</p>
                         </div>
                     </div>
                 </div>
@@ -83,19 +84,20 @@ export default function Home() {
                     <h3>Our Portfolio</h3>
                     <div className="portfolio-grid">
                         <div className="portfolio-item">
-                            <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1" />
-                            <h4>Project Title 1</h4>
-                            <p>A description of the project and technologies used.</p>
+                            <img src="https://via.placeholder.com/300x200?text=Gym+Template" alt="Gym Template Project" />
+                            <h4>Gym Template Website</h4>
+                            <p>A comprehensive web solution for gyms, enabling easy sign-ups, class scheduling, and member management. Built with a focus on user experience and efficient booking workflows.</p>
+                            <a href="https://novus-inc-marketplace.github.io/gymtemplate1" target="_blank" rel="noopener noreferrer" className="btn mt-4">View Live Project</a>
                         </div>
                         <div className="portfolio-item">
                             <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2" />
-                            <h4>Project Title 2</h4>
-                            <p>A description of the project and technologies used.</p>
+                            <h4>E-commerce Store Redesign</h4>
+                            <p>Revamped an existing online store to improve user navigation, optimize product display, and integrate secure payment gateways, resulting in a 25% increase in conversion rates.</p>
                         </div>
                         <div className="portfolio-item">
                             <img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3" />
-                            <h4>Project Title 3</h4>
-                            <p>A description of the project and technologies used.</p>
+                            <h4>SaaS Product Landing Page</h4>
+                            <p>Designed and developed a high-converting landing page for a new SaaS product, featuring engaging animations, clear calls-to-action, and lead capture forms that boosted sign-ups by 40%.</p>
                         </div>
                     </div>
                 </div>
@@ -105,12 +107,16 @@ export default function Home() {
                 <div className="container">
                     <h3>What Our Clients Say</h3>
                     <div className="testimonial-item">
-                        <p>"Incredible work! Our website has never looked better and performs flawlessly."</p>
-                        <span>- Happy Client 1</span>
+                        <p>"Working with Novus Inc was a game-changer for our business. Their web development expertise is unparalleled, and their approachable team made the entire process seamless. Highly recommended!"</p>
+                        <span>- Sarah L., CEO of Tech Innovations</span>
                     </div>
                     <div className="testimonial-item">
-                        <p>"They exceeded our expectations. Professional, responsive, and highly skilled."</p>
-                        <span>- Happy Client 2</span>
+                        <p>"Novus Inc transformed our online presence! Their digital marketing strategies brought us a significant increase in leads, and their friendly communication made it a pleasure to collaborate."</p>
+                        <span>- Mark T., Small Business Owner</span>
+                    </div>
+                    <div className="testimonial-item">
+                        <p>"The UI/UX design Novus Inc delivered for our platform exceeded all expectations. It's not just beautiful; it's incredibly intuitive, leading to fantastic user engagement."</p>
+                        <span>- Emily R., Product Manager at Creative Solutions</span>
                     </div>
                 </div>
             </section>
@@ -118,19 +124,23 @@ export default function Home() {
             <section id="contact" className="contact">
                 <div className="container">
                     <h3>Get in Touch</h3>
-                    <p>Ready to start your project? Contact us for a free consultation.</p>
+                    <p>Ready to bring your digital vision to reality? Contact us for a free consultation. We're always available except for Sundays!</p>
                     <form>
                         <input type="text" placeholder="Your Name" required />
                         <input type="email" placeholder="Your Email" required />
                         <textarea placeholder="Your Message" rows={5}></textarea>
                         <button type="submit" className="btn">Send Message</button>
                     </form>
+                    <div className="contact-info mt-8 text-center">
+                        <p>Email: <a href="mailto:novusincmarketplace@gmail.com" className="text-primary-color hover:underline">novusincmarketplace@gmail.com</a></p>
+                        <p>Phone: <a href="tel:+254798808105" className="text-primary-color hover:underline">+254 798 808105</a></p>
+                    </div>
                 </div>
             </section>
 
             <footer>
                 <div className="container">
-                    <p>&copy; 2024 My Web Dev Business. All rights reserved.</p>
+                    <p>&copy; 2024 Novus Inc. All rights reserved.</p>
                 </div>
             </footer>
         </>
