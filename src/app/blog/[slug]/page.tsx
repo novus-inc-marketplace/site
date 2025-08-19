@@ -40,3 +40,4 @@ export async function generateStaticParams() {
     slug: filename.replace(/\.md$/, ''),
   }));
 }
+
