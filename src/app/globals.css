@@ -1,27 +1,33 @@
+html {
+    scroll-behavior: smooth;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #333;
-    --background-color: #f4f4f4;
-    --surface-color: #fff;
-    --text-color: #333;
-    --light-text-color: #fff;
-    --hero-text-color: #333;
-    --testimonials-bg-color: #e2f2ff;
+    --primary-color: #2e86de; /* A vibrant blue */
+    --secondary-color: #2c3e50; /* Darker blue-grey for headers/footers */
+    --background-color: #f8f9fa; /* Light grey for subtle background */
+    --surface-color: #ffffff; /* Pure white for cards/sections */
+    --text-color: #34495e; /* Darker text for readability */
+    --light-text-color: #ecf0f1; /* Light grey for text on dark backgrounds */
+    --hero-text-color: #ffffff; /* White for hero text */
+    --testimonials-bg-color: #eaf4f4; /* Soft blue-green for testimonials section */
+    --border-color: #e0e0e0;
 }
 
 body.dark-theme {
-    --primary-color: #00bcd4;
-    --secondary-color: #f4f4f4;
-    --background-color: #2c2c2c;
-    --surface-color: #3c3c3c;
-    --text-color: #f4f4f4;
-    --light-text-color: #333;
-    --hero-text-color: #f4f4f4;
-    --testimonials-bg-color: #4a4a4a;
+    --primary-color: #82e0aa; /* Soft green-blue for dark mode accent */
+    --secondary-color: #1a1a1a; /* Deep black for headers/footers */
+    --background-color: #212121; /* Dark grey for subtle background */
+    --surface-color: #2c2c2c; /* Darker grey for cards/sections */
+    --text-color: #e0e0e0; /* Light text for readability */
+    --light-text-color: #34495e; /* Dark text for elements on light surfaces in dark mode */
+    --hero-text-color: #ffffff; /* White for hero text */
+    --testimonials-bg-color: #3a3a3a; /* Darker grey for testimonials section */
+    --border-color: #4a4a4a;
 }
 
 body {
@@ -32,6 +38,12 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    background-image: url('https://via.placeholder.com/1920x1080?text=Subtle+Tech+Background'); /* Placeholder image */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-blend-mode: overlay; /* Blends image with background-color */
+    transition: background-color 0.5s ease; /* Smooth transition for theme change */
 }
 
 .container {
@@ -78,11 +90,12 @@ header ul li a {
     color: var(--light-text-color);
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 header ul li a:hover {
     color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .btn-theme-toggle {
@@ -92,17 +105,18 @@ header ul li a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-theme-toggle:hover {
     background-color: var(--primary-color);
-    filter: brightness(1.2);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
 }
 
 /* Hero Section */
 .hero {
-    background: url('https://via.placeholder.com/1500x800?text=Web+Dev+Background') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x800?text=Web+Dev+Background') no-repeat center center/cover;
     color: var(--hero-text-color);
     text-align: center;
     padding: 100px 0;
@@ -110,16 +124,36 @@ header ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* Ensure overlay is above background but below content */
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2; /* Ensure content is above overlay */
 }
 
 .hero h2 {
     font-size: 48px;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero p {
     font-size: 20px;
     margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .btn {
@@ -129,12 +163,15 @@ header ul li a:hover {
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
 
 .btn:hover {
     background-color: var(--primary-color);
-    filter: brightness(0.8);
+    filter: brightness(0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
 }
 
 /* Sections General */
@@ -142,7 +179,10 @@ section {
     padding: 60px 0;
     background-color: var(--surface-color);
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 section h3 {
@@ -150,6 +190,20 @@ section h3 {
     font-size: 36px;
     margin-bottom: 40px;
     color: var(--primary-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 60px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
 }
 
 /* Services Section */
@@ -162,9 +216,17 @@ section h3 {
 .service-item {
     background-color: var(--background-color);
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .service-item h4 {
@@ -182,15 +244,27 @@ section h3 {
 
 .portfolio-item {
     background-color: var(--background-color);
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .portfolio-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .portfolio-item h4 {
@@ -211,12 +285,19 @@ section h3 {
 
 .testimonial-item {
     background-color: var(--surface-color);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 10px;
     margin-bottom: 20px;
     font-style: italic;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .testimonial-item span {
@@ -237,24 +318,36 @@ section h3 {
 
 .contact form input,
 .contact form textarea {
-    padding: 12px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     font-size: 16px;
     background-color: var(--surface-color);
     color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .contact form input:focus,
 .contact form textarea:focus {
     outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(46, 134, 222, 0.2); /* Adjust shadow color to new primary */
 }
 
 .contact form .btn {
     align-self: flex-start;
     border: none;
     cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    box-shadow: 0 4px 8px rgba(46, 134, 222, 0.3); /* Adjust shadow color to new primary */
+}
+
+.contact form .btn:hover {
+    background-color: var(--primary-color);
+    filter: brightness(0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 134, 222, 0.4); /* Adjust shadow color to new primary */
 }
 
 /* Footer */
@@ -298,4 +391,19 @@ footer {
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.7s ease-out forwards;
 }

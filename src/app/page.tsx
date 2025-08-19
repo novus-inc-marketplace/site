@@ -2,9 +2,35 @@
 
 import { useEffect } from 'react';
 import { useSession, signOut } from 'next-auth/react';
+import { useInView } from 'react-intersection-observer';
 
 export default function Home() {
     const { data: session } = useSession();
+
+    const [heroRef, heroInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const [servicesRef, servicesInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const [portfolioRef, portfolioInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const [testimonialsRef, testimonialsInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const [contactRef, contactInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
 
     useEffect(() => {
         const themeToggleBtn = document.getElementById('theme-toggle');
@@ -47,7 +73,7 @@ export default function Home() {
                 </nav>
             </header>
 
-            <section id="hero" className="hero">
+            <section id="hero" className={`hero ${heroInView ? 'animate-fade-in-up' : ''}`} ref={heroRef}>
                 <div className="container">
                     <h2>Bringing the digital world to reality.</h2>
                     <p>At Novus Inc, we don't just build websites; we craft digital experiences that resonate with your audience and drive real results. We focus on delivering exceptional value, building trust, and creating highly converting online presences that truly stand out.</p>
@@ -55,7 +81,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="services" className="services">
+            <section id="services" className={`services ${servicesInView ? 'animate-fade-in-up' : ''}`} ref={servicesRef}>
                 <div className="container">
                     <h3>Our Services</h3>
                     <div className="service-grid">
@@ -79,7 +105,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="portfolio" className="portfolio">
+            <section id="portfolio" className={`portfolio ${portfolioInView ? 'animate-fade-in-up' : ''}`} ref={portfolioRef}>
                 <div className="container">
                     <h3>Our Portfolio</h3>
                     <div className="portfolio-grid">
@@ -103,7 +129,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="testimonials" className="testimonials">
+            <section id="testimonials" className={`testimonials ${testimonialsInView ? 'animate-fade-in-up' : ''}`} ref={testimonialsRef}>
                 <div className="container">
                     <h3>What Our Clients Say</h3>
                     <div className="testimonial-item">
@@ -121,7 +147,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="contact" className="contact">
+            <section id="contact" className={`contact ${contactInView ? 'animate-fade-in-up' : ''}`} ref={contactRef}>
                 <div className="container">
                     <h3>Get in Touch</h3>
                     <p>Ready to bring your digital vision to reality? Contact us for a free consultation. We're always available except for Sundays!</p>
