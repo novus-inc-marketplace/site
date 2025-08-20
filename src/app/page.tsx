@@ -50,7 +50,7 @@ export default function Home() {
         });
     }, []);
 
-    return (
+  return (
         <>
             <header>
                 <nav>
@@ -167,8 +167,8 @@ export default function Home() {
             <footer>
                 <div className="container">
                     <p>&copy; 2024 Novus Inc. All rights reserved.</p>
-                </div>
-            </footer>
+        </div>
+      </footer>
         </>
-    );
+  );
 }
