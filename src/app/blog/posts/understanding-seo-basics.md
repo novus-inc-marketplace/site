@@ -49,3 +49,4 @@ This focuses on the technical aspects that help search engines crawl, index, and
 While SEO can seem complex, even basic optimization can make a significant difference. Start with keyword research, create high-quality content, and ensure your website is technically sound and mobile-friendly.
 
 At Novus Inc, we integrate robust SEO strategies into all our web development and digital marketing services to ensure your business doesn't just look great online, but also gets discovered by the right people.
+
