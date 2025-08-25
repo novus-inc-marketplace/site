@@ -1,12 +1,11 @@
-import NextAuth from "next-auth";
+t import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@/generated/prisma";
+import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import { type User } from "@/generated/prisma";
 
-const prisma = new PrismaClient();
-
-export const authOptions = {
+const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -56,15 +55,15 @@ export const authOptions = {
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
+      if (session.user) {
+        (session.user as User).id = token.id as string;
+      }
       return session;
     },
   },
   pages: {
     signIn: "/auth/signin", // Custom sign-in page
   },
-};
-
-const handler = NextAuth(authOptions);
+});
 
 export { handler as GET, handler as POST };
