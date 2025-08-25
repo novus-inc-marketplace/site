@@ -1,9 +1,9 @@
-import { PrismaClient } from "../../../../src/generated/prisma";
+import { PrismaClient } from "@/generated/prisma";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const { name, email, password } = await req.json();
 

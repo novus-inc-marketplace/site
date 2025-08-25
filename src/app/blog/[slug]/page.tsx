@@ -3,7 +3,16 @@ import path from 'path';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-export default async function BlogPost({ params }) {
+// Add type definition for params
+interface BlogPostParams {
+  slug: string;
+}
+
+interface BlogPostProps {
+  params: BlogPostParams;
+}
+
+export default async function BlogPost({ params }: BlogPostProps) {
   const { slug } = params;
   const postFilePath = path.join(process.cwd(), 'src/app/blog/posts', `${slug}.md`);
   let content = '';
@@ -32,7 +41,7 @@ export default async function BlogPost({ params }) {
   );
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const postsDirectory = path.join(process.cwd(), 'src/app/blog/posts');
   const filenames = await fs.promises.readdir(postsDirectory);
 
