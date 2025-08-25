@@ -9,11 +9,11 @@ interface BlogPostParams {
 }
 
 interface BlogPostProps {
-  params: BlogPostParams;
+  params: Promise<BlogPostParams>;
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const postFilePath = path.join(process.cwd(), 'src/app/blog/posts', `${slug}.md`);
   let content = '';
 
